@@ -1,0 +1,10 @@
+{% extends "basepage.html" %}
+{% load crispy_forms_tags %}
+{% block title %} homepage {% endblock %}
+{% block content %}
+    <p> aggiungi avatar</p>
+    <form>
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+{% endblock %}

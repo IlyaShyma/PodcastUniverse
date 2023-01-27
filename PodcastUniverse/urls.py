@@ -18,13 +18,23 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+
+import podcastapp.views
+import profileManagementApp
 from .views import *
+
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", startpage, name="home"),
+    # path("fakeregistration", esempio, name="fakeregistration"),
     path("podcastapp/", include("podcastapp.urls")),
-    path("registration/", UserCreateView.as_view(), name="registration")
-
+    path("registration/", UserCreateView.as_view(), name="registration"),
+    path("login/", auth_views.LoginView.as_view(), name="login"),
+    path("logout/", logout_view, name="logout"),
+    # path("registration-next-step/", podcastapp.views.AdvancedUserCreationView.as_view(), name="registration2")
+    path("profile/", include("profileManagementApp.urls")),
+    path("podcasts/", include("podcastapp.urls"))
 
 ]
 

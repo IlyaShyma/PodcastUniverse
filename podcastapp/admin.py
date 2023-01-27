@@ -1,4 +1,5 @@
 from django.contrib import admin
+from profileManagementApp.models import UserProfile
 from .models import *
 
 # Register your models here.

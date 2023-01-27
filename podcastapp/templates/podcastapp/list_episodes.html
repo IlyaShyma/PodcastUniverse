@@ -1,0 +1,24 @@
+{% extends "basepage.html" %}
+{% load static %}
+{% block title %} homepage {% endblock %}
+{% block content %}
+    {% if creator == True %}
+        <a href="{% url "podcastapp:create-episode" object.pk %}">add a new episode</a>
+    {% endif %}
+    <h1>Podcast: {{object.title}} </h1>
+    <h2>Desctiption: {{ object.description }}</h2>
+    <h2>Episodes</h2>
+    <ul>
+        {% for episode in episodes %}
+            <li> {{ episode.title }}
+                <audio controls>
+                    <source src="{{ episode.audio.url }}" type="audio/ogg">
+                    <source src="{{ episode.audio.url }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+                </audio>
+            <a href="{% url "podcastapp:episode-page" episode.pk %}"> open this episode</a>
+            </li>
+
+        {% endfor %}
+    </ul>
+{% endblock %}

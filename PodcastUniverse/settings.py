@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "podcastapp.apps.PodcastappConfig"
+    # "podcastapp.apps.PodcastappConfig",
+    # "profileManagementApp.apps.ProfilemanagementappConfig",
+    "profileManagementApp",
+    "podcastapp",
+
+    "crispy_forms",
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +119,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    BASE_DIR / "static/js"
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -125,6 +135,7 @@ MEDIA_URL = '/media/'
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+LOGIN_REDIRECT_URL = 'home'
 
 
 

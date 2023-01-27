@@ -1,0 +1,22 @@
+{% extends "basepage.html" %}
+{% block title %} user_settings {% endblock %}
+{% block content %}
+    <H1> User settings</H1>
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token %}
+
+        {% for field in form %}
+            {{ field }}
+
+        {% endfor %}
+
+        <input type="submit" value="Update">
+
+{#        <div class="form-buttons">#}
+{#            <input type="submit" value="Save" class="btn btn-primary"/>#}
+        {#            <a href="{%url 'tasks'%}" class="btn btn-outline">Cancel</a>#}
+        {#        </div>#}
+
+
+    </form>
+{% endblock %}

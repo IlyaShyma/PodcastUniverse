@@ -1,0 +1,18 @@
+{% extends "basepage.html" %}
+{% load static %}
+{% block title %} homepage {% endblock %}
+{% block content %}
+    <H1> Podcast {{ podcast.title }}</H1>
+    <h2> form to fill</h2>
+
+
+
+    <form method="post" enctype="multipart/form-data">> {% csrf_token %}
+
+      {{form}}
+
+      <input type="submit" class="btn btn-success" value="submit">
+
+    </form>
+
+{% endblock %}

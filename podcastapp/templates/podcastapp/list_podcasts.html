@@ -1,0 +1,17 @@
+{% extends "basepage.html" %}
+{% load static %}
+{% block title %} homepage {% endblock %}
+{% block content %}
+    <h1>Your podcasts</h1>
+    <a href="{% url "podcastapp:create_podcast" %}"> Create a new podcast! </a>
+    <ul>
+    {% for podcast in object_list %}
+        <li>{{ podcast.title }} - {{ podcast.description}} -
+            <a href={% url "podcastapp:podcast_episodes" podcast.pk %}> <img src="{{podcast.cover.url}}" alt="Smiley face" width="250" height="250"> </a>
+        </li>
+    {% empty %}
+        <li>No podcast yet</li>
+    {% endfor %}
+
+    </ul>
+{% endblock %}
