@@ -65,6 +65,22 @@ class SubscriptionEpisodePodcastView(SubscriptionsPodcastView):
             creation_date__gte=datetime.now() - timedelta(not_older_then)).order_by("-creation_date")
         return context
 
+class SubscriptionsPeopleView(SubscriptionsPodcastView):
+    template_name = "podcastapp/subsriptions-users.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        me = UserProfile.objects.get(user=self.request.user)
+        people_i_follow = me.following.all()
+
+        episodes_to_show = Episode.objects.none()
+        for user in people_i_follow:
+            episodes_to_show |= Episode.objects.filter(guest=user)
+
+        not_older_then = 10
+        context["episodes"] = episodes_to_show.filter(
+            creation_date__gte=datetime.now() - timedelta(not_older_then)).order_by("-creation_date")
+        return context
 
 def create_episode(request, podcast_id):
     podcast = get_object_or_404(Podcast, pk=podcast_id)

@@ -16,6 +16,10 @@
     <a class="nav-link {% block add_active_episodes %}  {% endblock %} " href="{% url "podcastapp:subscriptions-episodes" object.pk %}" >New releases</a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link {% block add_active_users %}  {% endblock %} " href="{% url "podcastapp:subscriptions-people" object.pk %}" >People you follow</a>
+  </li>
+
 </ul>
 {% endblock %}
 

@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-from .views import UserPodcasts, CreatePodcast, create_episode, episode_view, podcast_view, SubscriptionsPodcastView, SubscriptionEpisodePodcastView, search_all
+from .views import UserPodcasts, CreatePodcast, create_episode, episode_view, podcast_view, SubscriptionsPodcastView, \
+    SubscriptionEpisodePodcastView, search_all, SubscriptionsPeopleView
 
 app_name = "podcastapp"
 
@@ -13,6 +14,7 @@ urlpatterns = [
     path("<episode_id>/episode/", episode_view, name="episode-page"),
     path("<pk>/subscriptions/", SubscriptionsPodcastView.as_view(), name="subscriptions"),
     path("<pk>/subscriptions-episodes/", SubscriptionEpisodePodcastView.as_view(), name="subscriptions-episodes"),
+    path("<pk>/subscriptions-people/", SubscriptionsPeopleView.as_view(), name="subscriptions-people"),
     path("search-page/", search_all, name="search-page"),
 
 ]
