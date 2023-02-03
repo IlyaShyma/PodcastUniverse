@@ -1,0 +1,51 @@
+{#{% extends "basepage.html" %}#}
+{#{% block title %} user_settings {% endblock %}#}
+{#{% block content %}#}
+{#    <H1> User settings</H1>#}
+{#    <form method="POST" enctype="multipart/form-data">#}
+{#        {%csrf_token %}#}
+{##}
+{#        {% for field in form %}#}
+{#            {{ field }}#}
+{##}
+{#        {% endfor %}#}
+{##}
+{#        <input type="submit" value="Update">#}
+{##}
+{##}
+{#    </form>#}
+{#{% endblock %}#}
+
+
+{% extends "basepage.html" %}
+{% block title %} Settings {% endblock %}
+{% block content %}
+
+    <section class="vh-100" style="background-color: #ffffff;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-0">
+      <div class="col-xl-9">
+
+        <h1 class="text-black mb-4">User settings</h1>
+
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {%csrf_token %}
+
+                {{ form.as_p }}
+
+                <input class="btn btn-success" type="submit" value="Update">
+
+            </form>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "podcastapp/subscriptions_base_page.html" %}
+{% block add_active_podcasts %} active {% endblock %}
+{% block content %}
+
+
+<div class="row mt-3">
+        {% for podcast in podcasts %}
+         <div class="col-lg-3 mb-2 mb-lg-0 d-none d-lg-block">
+            <div class="card" style="width: 250px;">
+             <a href={% url "podcastapp:podcast_episodes" podcast.pk %}>
+             <img src="{{podcast.cover.url}}" alt="Smiley face" width="250" height="250">
+             </a>
+             <div class="card-body">
+                <p class="card-text max_description">
+                  {{ podcast.title }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+</div>
+
+{% endblock %}
+

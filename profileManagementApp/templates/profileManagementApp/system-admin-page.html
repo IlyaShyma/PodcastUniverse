@@ -1,0 +1,85 @@
+{% extends "basepage.html" %}
+{% block title %} Admin page {% endblock %}
+{% block head %} {% endblock %}
+
+{% block content %}
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="card mt-4 ">
+                  <div class="card-body ">
+                    <div class="row">
+                      <div class="col-sm-4">
+                          <h3 class="display-9">Reported comments</h3>
+                      </div>
+                    </div>
+
+                    <div class="scroll_admin_page ">
+                    {% for comment in comments%}
+                        <hr>
+                        <div class="row ">
+                          <div class="col-sm-3">
+                            <a href="{% url "podcastapp:podcast_episodes" comment.episode.podcast.pk %}">
+                                <h5 class="mb-3"> {{ comment.episode.podcast.title }} </h5> </a>
+                            <a href="{% url "podcastapp:episode-page" comment.episode.pk %}">
+                              <p class="mb-0">{{ comment.episode.title }}</p> </a>
+
+                          </div>
+
+                          <div class="col-sm-9 ">
+                            <p class="text-danger mb-0">{{ comment.content }}</p>
+                            <p class="text-muted mb-0"> Tot reports {{ comment.reports }}</p>
+                          </div>
+
+                          <div class="col-sm-11 ">
+                              <form method="post">
+                                    {% csrf_token %}
+                                    {{ delete_block_form }}
+                                     <p class="text-muted mb-0"> Delete the comment and ban the user </p>
+                                     <button  class="btn btn-success " name="true" value="{{ comment.pk }}">Yes</button>
+                                     <button  class="btn btn-danger" name="false" value="{{ comment.pk }}">No</button>
+                              </form>
+                          </div>
+
+                        </div>
+                    {% endfor %}
+                    </div>
+
+                  </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                  <div class="card mt-4 ">
+                  <div class="card-body ">
+                    <div class="row">
+                      <div class="col-sm-4">
+                          <h3 class="display-9">Banned users</h3>
+                      </div>
+                    </div>
+
+                    <div class="scroll_admin_page ">
+
+                        <ul class="list-group ul_width">
+                            {% for user in banned_users%}
+                            <li class="list-group-item"><a href="{% url "profileManagementApp:user-page" user.pk%}"><h6> <img class="rounded-circle shadow-1-strong me-3" src="{{ user.avatar.url }}" alt="avatar" width="60" height="60" />{{ user.user}} </h6> </a>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ unblock_user_form }}
+                                     <button  class="btn btn-success " name="true" value="{{ user.pk }}">Unblock</button>
+
+                                </form>
+                            </li>
+
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

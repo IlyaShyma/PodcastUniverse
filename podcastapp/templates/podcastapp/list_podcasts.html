@@ -1,17 +1,60 @@
 {% extends "basepage.html" %}
 {% load static %}
-{% block title %} homepage {% endblock %}
+{% block title %} your podcasts {% endblock %}
 {% block content %}
-    <h1>Your podcasts</h1>
-    <a href="{% url "podcastapp:create_podcast" %}"> Create a new podcast! </a>
-    <ul>
-    {% for podcast in object_list %}
-        <li>{{ podcast.title }} - {{ podcast.description}} -
-            <a href={% url "podcastapp:podcast_episodes" podcast.pk %}> <img src="{{podcast.cover.url}}" alt="Smiley face" width="250" height="250"> </a>
-        </li>
-    {% empty %}
-        <li>No podcast yet</li>
-    {% endfor %}
+{#    <h1>Your podcasts</h1>#}
+{#    <a href="{% url "podcastapp:create_podcast" %}"> Create a new podcast! </a>#}
+{#    <ul>#}
+{#    {% for podcast in object_list %}#}
+{#        <li>{{ podcast.title }} - {{ podcast.description}} -#}
+{#            <a href={% url "podcastapp:podcast_episodes" podcast.pk %}> <img src="{{podcast.cover.url}}" alt="Smiley face" width="250" height="250"> </a>#}
+{#        </li>#}
+{#    {% empty %}#}
+{#        <li>No podcast yet</li>#}
+{#    {% endfor %}#}
+{##}
+{#    </ul>#}
 
-    </ul>
+
+
+    <section class="" style="background-color: #ffffff;">
+  <div class="container ">
+    <div class="row d-flex justify-content-center align-items-center h-0">
+      <div class="col-xl-9">
+
+        <h1 class="text-black mb-4">Your podcasts!</h1>
+
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+
+        <a type="button" class="btn btn-success pull-center mb-4" href="{% url "podcastapp:create_podcast" %}">Create a new podcast </a>
+
+        {% for podcast in object_list %}
+
+               <div class="col-lg-3 mt-2 mb-2 mb-lg-0 d-none d-lg-block">
+                <div class="card" style="width: 250px;">
+                 <a href={% url "podcastapp:podcast_episodes" podcast.pk %}>
+                 <img src="{{podcast.cover.url}}" alt="Smiley face" width="250" height="250">
+                 </a>
+                 <div class="card-body">
+                    <p class="card-text max_description">
+                      {{ podcast.title }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <hr>
+
+        {% empty %}
+             No podcast yet<
+        {% endfor %}
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 {% endblock %}

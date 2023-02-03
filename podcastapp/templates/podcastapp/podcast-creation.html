@@ -2,22 +2,34 @@
 {% block title %} Podcast creation {% endblock %}
 {% block content %}
 
-    <form method="POST" enctype="multipart/form-data">
-        {%csrf_token %}
-
-        {% for field in form %}
-            {{ field }}
-
-        {% endfor %}
-
-        <input type="submit" value="Create">
-
-{#        <div class="form-buttons">#}
-{#            <input type="submit" value="Save" class="btn btn-primary"/>#}
-        {#            <a href="{%url 'tasks'%}" class="btn btn-outline">Cancel</a>#}
-        {#        </div>#}
 
 
-    </form>
+
+    <section class="vh-100" style="background-color: #ffffff;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-0">
+      <div class="col-xl-9">
+
+        <h1 class="text-black mb-4">Start a podcast!</h1>
+
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {%csrf_token %}
+
+                {{ form.as_p }}
+
+                <input class="btn btn-success" type="submit" value="Create">
+
+            </form>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}

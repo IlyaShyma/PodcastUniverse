@@ -34,7 +34,7 @@ urlpatterns = [
     path("logout/", logout_view, name="logout"),
     # path("registration-next-step/", podcastapp.views.AdvancedUserCreationView.as_view(), name="registration2")
     path("profile/", include("profileManagementApp.urls")),
-    path("podcasts/", include("podcastapp.urls"))
+    path("podcasts/", include("podcastapp.urls")),
 
 ]
 

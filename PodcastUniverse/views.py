@@ -4,21 +4,33 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import DetailView
 
 from profileManagementApp.models import UserProfile
 from podcastapp.models import Podcast
 from .forms import *
 from django.views.generic.edit import CreateView
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
 
 def startpage(request):
+    context = {}
+    # if request.method == "POST":
+    #     form = ChooseCategoryForm(request.POST)
+    #
+    # form = ChooseCategoryForm()
+    # context["form"] = form
     podcasts = Podcast.objects.all().order_by("-creation_date")
+
+    context["podcasts"] = podcasts
     if request.user.is_anonymous:
-        return render(request, template_name="homepage.html", context={"podcasts": podcasts})
+        return render(request, template_name="homepage.html", context=context)
     else:
         user_profile = UserProfile.objects.get(user=request.user.pk)
-        return render(request, template_name="homepage.html", context={"user_profile": user_profile, "podcasts": podcasts})
+        context["user_profile"] = user_profile
+        return render(request, template_name="homepage.html", context=context)
+
+
 
 
 # @login_required

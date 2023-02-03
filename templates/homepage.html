@@ -1,18 +1,33 @@
 {% extends "basepage.html" %}
 {% block title %} homepage {% endblock %}
-{% block add_link %}<li><a class="dropdown-item" href="{% url "profileManagementApp:user_settings" pk=user_profile.pk %}">Profile settings</a></li>{% endblock %}
-{% block content %}
-    <h1> All podcasts </h1>
-    <ul>
-    {% for podcast in podcasts %}
-        <li>{{ podcast.title }} - {{ podcast.description}} -
-            <a href={% url "podcastapp:podcast_episodes" podcast.pk %}><img src="{{podcast.cover.url}}" alt="Smiley face" width="250" height="250"> </a>
-        </li>
-    {% empty %}
-        <li>No podcast yet</li>
-    {% endfor %}
 
-    </ul>
+{% block content %}
+
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    {{ form }}#}
+{#    <button type="submit" class="btn btn-success">Send</button>#}
+{#</form>#}
+
+<div class="row">
+        {% for podcast in podcasts %}
+{#         <div class="col-lg-3 mb-2 mb-lg-0 d-none d-lg-block">#}
+         <div class="col-md-3 d-lg-block">
+            <div class="card" style="width: 250px;">
+             <a href={% url "podcastapp:podcast_episodes" podcast.pk %}>
+             <img src="{{podcast.cover.url}}" alt="Smiley face" width="250" height="250">
+             </a>
+             <div class="card-body">
+                <p class="card-text max_description">
+                  {{ podcast.title }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+</div>
+
 
 {% endblock %}
 

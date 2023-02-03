@@ -1,0 +1,178 @@
+{% extends "basepage.html" %}
+{% block title %} User page {% endblock %}
+{% block head %} {% endblock %}
+
+{% block content %}
+
+<section>
+  <div class="container py-5">
+
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+{#            <img src="{{ userprofile.avatar.url }}" alt="avatar"#}
+{#              class="rounded-circle img-fluid" style="width: 150px;">#}
+               <img class="rounded-circle shadow-1-strong me-3"
+                src="{{ userprofile.avatar.url }}" alt="avatar" width="150"
+                height="150" />
+            <h5 class="my-3">{{ userprofile.user }}</h5>
+            <p class="text-muted mb-1">{{ userprofile.profile_bio }}</p>
+
+             <div class="d-flex justify-content-center mb-2">
+
+              {% if me != userprofile %}
+                  <form method="post">
+                    {% csrf_token %}
+                    {{ follow_unfollow_form }}
+                      {% if not following_right_now %}
+                        <button class="btn btn-primary" name="follow_action" value="follow">Follow</button>
+                      {% else %}
+                        <button class="btn btn-danger" name="follow_action" value="unfollow">Unfollow</button>
+                      {% endif %}
+                  </form>
+              {% else %}
+                    <p class="mb-0"> My followers: {{ my_subscribers.count }}</p>
+                    {% if me.banned %}
+                        <p class="mb-0"> You are banned. You can't leave comments anymore </p>
+                    {% endif %}
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+{#        INVITATION SECTION #}
+        <div class="card mb-4 mb-lg-0">
+         {% if userprofile == me %}
+                  <div class="card-header"> <h1 class="display-9"> Invitations </h1></div>
+                  <div class="card-body p-0 user-podcast-scroll">
+                    <ul class="list-group list-group-flush rounded-3">
+                           {% if invitations.count > 0 %}
+                               {% for invitation in invitations %}
+                                  <li class="list-group-item d-flex  align-items-center p-3">
+                                    <i class="fas  text-warning"></i>
+                                      <p class="mb-0"> Are you a guest of this episode? <a href="{% url "podcastapp:episode-page" invitation.episode.pk %}"> {{ invitation.episode.title }} </a> </p>
+
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            {{ form }}
+                                            <button  class="btn btn-success " name="true" value="{{ invitation.pk }}">Yes</button>
+                                            <button  class="btn btn-danger" name="false" value="{{ invitation.pk }}">No</button>
+                                        </form>
+                                  </li>
+                               {% endfor %}
+                           {% else %}
+                               <li class="list-group-item d-flex  align-items-center p-3">
+                                    <i class="text-warning"></i>
+                                      <p class="mb-0"> You have no invitations </p>
+                                  </li>
+                           {% endif %}
+                    </ul>
+                  </div>
+
+         {% endif %}
+                 <div class="card-header"> <h1 class="display-9"> Favourite episodes </h1></div>
+                  <div class="card-body p-0 user-podcast-scroll">
+							<ul class="list-group fa-padding">
+								{% for episode in favourite_episodes %}
+                                <li class="list-group-item" data-toggle="modal" data-target="#issue">
+									<div class="media">
+										<i class="fa fa-podcast pull-left" aria-hidden="true"></i>
+										<div class="media-body">
+                                            <strong> <a href="{% url "podcastapp:episode-page" episode.pk %}">Episode: {{ episode.title }} </a>Podcast: {{ episode.podcast }} </strong>
+
+										</div>
+									</div>
+								</li>
+                                {% endfor %}
+							</ul>
+                  </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+{#        FIRST ROW#}
+        <div class="row">
+
+
+          <div class="col-md-6">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-header">
+                <h1 class="display-9">Host</h1>
+              </div>
+              <div class="card-body user-podcast-scroll">
+                  {% for podcast in host %}
+                     <a href={% url "podcastapp:podcast_episodes" podcast.pk %}><img src="{{podcast.cover.url}}"  width="115" height="115"> </a>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-md-6">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-header">
+                <h1 class="display-9">Appearances</h1>
+              </div>
+              <div class="card-body">
+                <div class="col-md-12">
+                    <ul class="list-group fa-padding">
+                        {% for episode in episodes %}
+                        <li class="list-group-item" data-toggle="modal" data-target="#issue">
+                            <div class="media">
+                                <i class="fa fa-podcast pull-left" aria-hidden="true"></i>
+                                <div class="media-body">
+                                    <strong> <a href="{% url "podcastapp:episode-page" episode.pk %}">Episode: {{ episode.title }} </a>Podcast: {{ episode.podcast }} </strong>
+                                        <p class="info"> {{ episode.creation_date }} </p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+{#        COMMENT SECTION#}
+        <div class="card mt-4 ">
+          <div class="card-body ">
+            <div class="row">
+              <div class="col-sm-4">
+                  <h1 class="display-9">Comments</h1>
+              </div>
+            </div>
+
+            <div class="scroll">
+            {% for comment in comments%}
+                <hr>
+                <div class="row ">
+                  <div class="col-sm-3">
+                    <a href="{% url "podcastapp:podcast_episodes" comment.episode.podcast.pk %}">
+                        <h5 class="mb-3"> {{ comment.episode.podcast.title }} </h5> </a>
+                    <a href="{% url "podcastapp:episode-page" comment.episode.pk %}">
+                      <p class="mb-0">{{ comment.episode.title }}</p> </a>
+                  </div>
+
+                  <div class="col-sm-9 ">
+                    <p class="text-muted mb-0">{{ comment.content }}</p>
+                  </div>
+                </div>
+            {% endfor %}
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

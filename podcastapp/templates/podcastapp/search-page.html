@@ -1,0 +1,55 @@
+{% extends "basepage.html" %}
+{% load static %}
+{% block title %} homepage {% endblock %}
+
+{% block content %}
+    <div class="card full_height" style="text-align: center;">
+        <h1> You searched for {{ searched }}</h1>
+        {% if podcasts or user_profiles or episodes%}
+
+
+    <div class="card" style="text-align: left;">
+            {% if podcasts %}
+                <h3 class="box-title mt-5">Podcasts</h3>
+                    <ul class="list-group">
+                        {% for podcast in podcasts%}
+                        <li class="list-group-item"><a href="{% url "podcastapp:podcast_episodes" podcast.pk %}"> <img src="{{podcast.cover.url}}" alt="podcast" class="responsive_cover_small"> {{ podcast.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+            {% endif %}
+
+           {% if user_profiles %}
+            <h3 class="box-title mt-5">Users</h3>
+                <ul class="list-group">
+                    {% for user in user_profiles%}
+                     <li class="list-group-item"><a href="{% url "profileManagementApp:user-page" user.pk%}"><h6> <img class="rounded-circle shadow-1-strong me-3" src="{{ user.avatar.url }}" alt="avatar" width="60" height="60" />{{ user.user}} </h6> </a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+             {% if episodes %}
+                <h3 class="box-title mt-5">Episodes</h3>
+                    <ul class="list-group">
+                        {% for episode in episodes%}
+                         <li class="list-group-item" data-toggle="modal" data-target="#issue">
+                            <div class="media">
+                                <i class="fa fa-podcast pull-left" aria-hidden="true"></i>
+                                <div class="media-body">
+                                    <strong> <a href="{% url "podcastapp:episode-page" episode.pk %}"> {{ episode.title }} </a> </strong>
+                                        <p class="info"> {{ episode.creation_date }} </p>
+                                </div>
+                            </div>
+                         </li>
+                        {% endfor %}
+                    </ul>
+            {% endif %}
+
+    </div>
+
+
+
+        {% else %}
+            <h2> No results found</h2>
+        {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "podcastapp/subscriptions_base_page.html" %}
+{% block add_active_episodes %} active {% endblock %}
+{% block content %}
+				 <div class="grid-body">
+
+
+					 <div class="btn-group mt-3">
+						<button type="button" class="btn btn-default active">Total {{ episodes.count }}</button>
+
+
+                    </div>
+
+					<div class="padding"></div>
+
+					<div class="row">
+						<!-- BEGIN TICKET CONTENT -->
+						<div class="col-md-12">
+							<ul class="list-group fa-padding">
+								{% for episode in episodes %}
+                                <li class="list-group-item" data-toggle="modal" data-target="#issue">
+									<div class="media">
+										<i class="fa fa-podcast pull-left" aria-hidden="true"></i>
+										<div class="media-body">
+                                            <strong> <a href="{% url "podcastapp:episode-page" episode.pk %}"> {{ episode.title }} </a> {{ episode.podcast.title }}</strong>
+                                                <p class="info"> {{ episode.creation_date }} </p>
+										</div>
+									</div>
+								</li>
+                                {% endfor %}
+							</ul>
+						</div>
+
+					</div>
+				</div>
+{% endblock %}
+

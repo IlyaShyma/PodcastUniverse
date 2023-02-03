@@ -1,18 +1,34 @@
+
 {% extends "basepage.html" %}
-{% load static %}
-{% block title %} homepage {% endblock %}
+{% block title %} Episode creation {% endblock %}
 {% block content %}
-    <H1> Podcast {{ podcast.title }}</H1>
-    <h2> form to fill</h2>
 
 
+    <section class="vh-100" style="background-color: #ffffff;">
 
-    <form method="post" enctype="multipart/form-data">> {% csrf_token %}
+    <div class="row d-flex justify-content-center align-items-center h-0">
+      <div class="col-xl-9">
 
-      {{form}}
+        <h1 class="text-black mb-4">Create a new episode!</h1>
 
-      <input type="submit" class="btn btn-success" value="submit">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {%csrf_token %}
 
-    </form>
+                {{ form.as_p }}
+
+                <input class="btn btn-success" type="submit" value="Create">
+
+            </form>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+</section>
 
 {% endblock %}

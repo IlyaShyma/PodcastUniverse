@@ -1,24 +1,100 @@
 {% extends "basepage.html" %}
 {% load static %}
 {% block title %} homepage {% endblock %}
-{% block content %}
-    {% if creator == True %}
-        <a href="{% url "podcastapp:create-episode" object.pk %}">add a new episode</a>
-    {% endif %}
-    <h1>Podcast: {{object.title}} </h1>
-    <h2>Desctiption: {{ object.description }}</h2>
-    <h2>Episodes</h2>
-    <ul>
-        {% for episode in episodes %}
-            <li> {{ episode.title }}
-                <audio controls>
-                    <source src="{{ episode.audio.url }}" type="audio/ogg">
-                    <source src="{{ episode.audio.url }}" type="audio/mpeg">
-                Your browser does not support the audio element.
-                </audio>
-            <a href="{% url "podcastapp:episode-page" episode.pk %}"> open this episode</a>
-            </li>
+{% block head %}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
 
-        {% endfor %}
-    </ul>
+{% block content %}
+
+<div class>
+<section class="content">
+	<div class="row">
+		<!-- BEGIN NAV TICKET -->
+		<div class="col-md-3">
+			<div class="grid support">
+				<div class="grid-body">
+					<h2>{{ object.title }}</h2>
+                    <img src="{{object.cover.url}}" alt="podcast" class="responsive_cover">
+					<hr>
+
+                    <p>{{object.description }}</p>
+
+					<hr>
+                    <p>Subscribers: {{object.subscribers.count}}</p>
+
+					<hr>
+
+					<h5><strong>Hosts</strong></h5>
+					<ul class="list-group ul_width">
+					    {% for host in hosts%}
+                        <li class="list-group-item"><a href="{% url "profileManagementApp:user-page" host.pk%}"><h6> <img class="rounded-circle shadow-1-strong me-3" src="{{ host.avatar.url }}" alt="avatar" width="60" height="60" />{{ host.user}} </h6> </a></li>
+                        {% endfor %}
+                    </ul>
+				</div>
+			</div>
+		</div>
+		<!-- END NAV TICKET -->
+		<!-- BEGIN TICKET -->
+		<div class="col-md-9">
+			<div class="grid support-content">
+				 <div class="grid-body">
+					 <h2>Episodes</h2>
+
+					 <hr>
+
+					 <div class="btn-group">
+						<button type="button" class="btn btn-default active">Total {{ episodes.count }}</button>
+
+					<!-- BEGIN NEW TICKET -->
+                    {% if creator %}
+					    <a type="button" class="btn btn-success pull-right" href="{% url "podcastapp:create-episode" object.pk %}">Add a new episode</a>
+                    {% else %}
+
+                        <form method="post">
+                        {% csrf_token %}
+                            {% if subscribed %}
+                                <button type="submit" class="btn btn-danger pull-right" name="action" value="unsubscribe" >
+                                                Unsubscribe <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                </button>
+                            {% else %}
+                                <button type="submit" class="btn btn-success pull-right" name="action" value="subscribe">
+                                                Subscribe <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                </button>
+                            {% endif %}
+                        </form>
+                    {% endif %}
+
+                    </div>
+
+					<div class="padding"></div>
+
+					<div class="row">
+						<!-- BEGIN TICKET CONTENT -->
+						<div class="col-md-12">
+							<ul class="list-group fa-padding">
+								{% for episode in episodes %}
+                                <li class="list-group-item" data-toggle="modal" data-target="#issue">
+									<div class="media">
+										<i class="fa fa-podcast pull-left" aria-hidden="true"></i>
+										<div class="media-body">
+                                            <strong> <a href="{% url "podcastapp:episode-page" episode.pk %}"> {{ episode.title }} </a> </strong>
+                                                <p class="info"> {{ episode.creation_date }} </p>
+										</div>
+									</div>
+								</li>
+                                {% endfor %}
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END TICKET -->
+	</div>
+</section>
+</div>
+
 {% endblock %}

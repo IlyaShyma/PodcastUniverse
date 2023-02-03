@@ -4,9 +4,8 @@ from django.core.files.storage import FileSystemStorage
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import datetime
+from audio_validator.validator import AudioValidator
 
-# podcast_stor_loc = FileSystemStorage(location="/media/podcast_cover")
-# user_avatar_loc = FileSystemStorage(location="/media/avatar_pic")
 from profileManagementApp.models import UserProfile
 
 
@@ -43,7 +42,8 @@ class Episode(models.Model):
     dislikes = models.IntegerField(default=0)
     view_count = models.IntegerField(default=0)
 
-    guest = models.ManyToManyField(UserProfile)
+    favourite_episodes = models.ManyToManyField(UserProfile, related_name="liked_episode", blank=True)
+    guest = models.ManyToManyField(UserProfile, blank=True)
     podcast = models.ForeignKey(Podcast, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -57,11 +57,21 @@ class Comment(models.Model):
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
 
+    reports = models.IntegerField(default=0)
+
     episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
 
+class Invitation(models.Model):
+    CHOICES = [
+        (0, "unconfirmed"),
+        (1, "confirmed"),
+        (2, "rejected"),
+    ]
 
-
-
+    from_user_profile = models.ForeignKey(UserProfile, blank=True, on_delete=models.CASCADE, related_name="sender", null=True)
+    to_user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="receiver", null=True)
+    status = models.PositiveSmallIntegerField(choices=CHOICES, default=0)
+    episode = models.ForeignKey(Episode, on_delete=models.CASCADE, blank=True, null=True)
 
