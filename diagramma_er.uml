@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_group</OriginalElement>
+  <nodes>
+    <node x="2059.1562088548" y="-46.63959623766917">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user</node>
+    <node x="944.019124393523" y="203.5994494150035">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode_favourite_episodes</node>
+    <node x="292.41116130274" y="-17.561137875659625">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast</node>
+    <node x="3165.3373279848" y="364.1186440677967">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_permission</node>
+    <node x="3284.654108806718" y="71.11864406779671">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.django_content_type</node>
+    <node x="774.4387947269304" y="1389.0602636534838">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.sqlite_sequence</node>
+    <node x="953.1640472403997" y="879.7752542632103">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode_guest</node>
+    <node x="361.4467385485962" y="769.7752542632103">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_comment</node>
+    <node x="3484.786372498899" y="320.1186440677967">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.django_admin_log</node>
+    <node x="665.4649803219002" y="4.438862124340375">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast_categories</node>
+    <node x="137.43879472693033" y="1389.0602636534838">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.sqlite_master</node>
+    <node x="2085.3829044525064" y="722.5468379597767">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile_following</node>
+    <node x="540.4387947269304" y="1389.0602636534838">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.django_session</node>
+    <node x="3113.242008350097" y="666.1186440677967">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_group_permissions</node>
+    <node x="1706.8813559322034" y="879.7752542632103">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_invitation</node>
+    <node x="478.78888031374026" y="203.5994494150035">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode</node>
+    <node x="2627.5187728985406" y="86.40750936759173">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user_groups</node>
+    <node x="320.4387947269303" y="1389.0602636534838">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.django_migrations</node>
+    <node x="39.78885644456409" y="335.5994494150035">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast_host</node>
+    <node x="189.56991331008112" y="1056.4969794295325">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast_subscribers</node>
+    <node x="2970.270416613691" y="581.668196069435">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_group</node>
+    <node x="1591.3813559322034" y="217.1186440677967">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile</node>
+    <node x="2802.881604587766" y="733.826948076776">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user_user_permissions</node>
+    <node x="1061.4701260979616" y="15.438862124340375">76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_category</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_comment" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode" relationship="REFERENCES">
+      <point x="-51.0" y="-104.0" />
+      <point x="412.4467385485962" y="524.6598990594174" />
+      <point x="535.1818221199649" y="524.6598990594174" />
+      <point x="535.1818221199649" y="433.5994494150035" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_group_permissions" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_permission" relationship="REFERENCES">
+      <point x="54.75" y="-49.0" />
+      <point x="3277.492008350097" y="580.1186440677967" />
+      <point x="3258.3373279848" y="580.1186440677967" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.django_admin_log" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user" relationship="REFERENCES">
+      <point x="-54.5" y="-104.0" />
+      <point x="3539.286372498899" y="282.1186440677967" />
+      <point x="3425.8373279848" y="282.1186440677967" />
+      <point x="3425.8373279848" y="100.11680878447476" />
+      <point x="2151.6562088548" y="100.11680878447476" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode_favourite_episodes" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile" relationship="REFERENCES">
+      <point x="-85.5" y="-49.0" />
+      <point x="1029.519124393523" y="254.29972470750175" />
+      <point x="1115.019124393523" y="254.29972470750175" />
+      <point x="1115.019124393523" y="252.5994494150035" />
+      <point x="1390.4826481375012" y="252.5994494150035" />
+      <point x="1390.4826481375012" y="509.23904565267253" />
+      <point x="1616.4646892655367" y="509.23904565267253" />
+      <point x="-125.41666666666674" y="71.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.django_admin_log" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.django_content_type" relationship="REFERENCES">
+      <point x="54.5" y="-104.0" />
+      <point x="3648.286372498899" y="278.1186440677967" />
+      <point x="3381.654108806718" y="278.1186440677967" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast_categories" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_category" relationship="REFERENCES">
+      <point x="70.75" y="-49.0" />
+      <point x="877.7149803219002" y="53.438862124340375" />
+      <point x="1085.7059723178104" y="53.438862124340375" />
+      <point x="1085.7059723178104" y="71.66544314445201" />
+      <point x="1093.328415793092" y="71.66544314445201" />
+      <point x="1093.328415793092" y="53.438862124340375" />
+      <point x="1229.8407127016906" y="53.438862124340375" />
+      <point x="1229.8407127016906" y="91.43886212434037" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_permission" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.django_content_type" relationship="REFERENCES">
+      <point x="0.0" y="-60.0" />
+      <point x="3258.3373279848" y="278.1186440677967" />
+      <point x="3381.654108806718" y="278.1186440677967" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user_groups" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_group" relationship="REFERENCES">
+      <point x="42.75" y="-49.0" />
+      <point x="2755.7687728985406" y="629.0" />
+      <point x="3045.270416613691" y="629.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_invitation" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode" relationship="REFERENCES">
+      <point x="-70.0" y="-71.0" />
+      <point x="1741.8813559322034" y="1082.0447350309707" />
+      <point x="595.342409410628" y="1082.0447350309707" />
+      <point x="595.342409410628" y="433.5994494150035" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_comment" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile" relationship="REFERENCES">
+      <point x="50.99999999999994" y="-104.0" />
+      <point x="514.4467385485962" y="670.9741530932172" />
+      <point x="1711.4240269174893" y="670.9741530932172" />
+      <point x="-30.457329014714105" y="73.99024940930059" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast_categories" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast" relationship="REFERENCES">
+      <point x="-70.75" y="-49.0" />
+      <point x="736.2149803219002" y="68.11768754301434" />
+      <point x="390.41116130274" y="68.11768754301434" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode_guest" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile" relationship="REFERENCES">
+      <point x="-61.0" y="-49.0" />
+      <point x="1014.1640472403997" y="972.6423491626521" />
+      <point x="1504.5156759855486" y="972.6423491626521" />
+      <point x="1504.5156759855486" y="550.679743060335" />
+      <point x="1631.2099105299385" y="550.679743060335" />
+      <point x="-110.67144540226491" y="75.51124046229444" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode_guest" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode" relationship="REFERENCES">
+      <point x="61.0" y="-49.0" />
+      <point x="1136.1640472403997" y="899.4425326909843" />
+      <point x="755.7706421857293" y="899.4425326909843" />
+      <point x="755.7706421857293" y="505.272960159058" />
+      <point x="639.2095043100697" y="505.272960159058" />
+      <point x="639.2095043100697" y="433.5994494150035" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast_host" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast" relationship="REFERENCES">
+      <point x="-59.25" y="-49.0" />
+      <point x="99.03885644456409" y="305.0" />
+      <point x="304.67094899441787" y="305.0" />
+      <point x="-85.74021230832216" y="74.76278963064937" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_group_permissions" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_group" relationship="REFERENCES">
+      <point x="-54.75" y="-49.0" />
+      <point x="3167.992008350097" y="629.0" />
+      <point x="3045.270416613691" y="629.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile_following" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile" relationship="REFERENCES">
+      <point x="94.0" y="-49.0" />
+      <point x="2033.9929832167488" y="722.5468379597767" />
+      <point x="2033.9929832167488" y="418.5094440620939" />
+      <point x="1867.29802259887" y="418.5094440620939" />
+      <point x="125.41666666666652" y="71.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_invitation" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile" relationship="REFERENCES">
+      <point x="70.0" y="-71.0" />
+      <point x="1851.801062286872" y="879.7752542632103" />
+      <point x="1851.801062286872" y="542.6463068163408" />
+      <point x="1790.7782550680909" y="542.6463068163408" />
+      <point x="1790.7782550680909" y="359.1186440677967" />
+      <point x="25.083333333333258" y="71.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user_user_permissions" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_permission" relationship="REFERENCES">
+      <point x="62.25" y="-49.0" />
+      <point x="2989.631604587766" y="580.1186440677967" />
+      <point x="3258.3373279848" y="580.1186440677967" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast_host" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile" relationship="REFERENCES">
+      <point x="59.24999999999994" y="-49.0" />
+      <point x="217.53885644456403" y="429.65848436185706" />
+      <point x="93.45764515757152" y="429.65848436185706" />
+      <point x="93.45764515757152" y="472.8920241645636" />
+      <point x="785.0953196347032" y="472.8920241645636" />
+      <point x="785.0953196347032" y="147.51915576967195" />
+      <point x="1474.8942417985784" y="147.51915576967195" />
+      <point x="1474.8942417985784" y="359.1186440677967" />
+      <point x="-125.41666666666674" y="71.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user_user_permissions" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user" relationship="REFERENCES">
+      <point x="-62.25" y="-49.0" />
+      <point x="2865.131604587766" y="619.0" />
+      <point x="2579.238337783453" y="619.0" />
+      <point x="2579.238337783453" y="135.40750936759173" />
+      <point x="2151.6562088548" y="135.40750936759173" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast_subscribers" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile" relationship="REFERENCES">
+      <point x="73.0" y="-49.0" />
+      <point x="408.5699133100811" y="1117.6086258316132" />
+      <point x="398.54314876163727" y="1117.6086258316132" />
+      <point x="398.54314876163727" y="1192.7761719048713" />
+      <point x="1653.7701307639372" y="1192.7761719048713" />
+      <point x="-88.11122516826617" y="72.08576061217599" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user_groups" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user" relationship="REFERENCES">
+      <point x="-42.75" y="-49.0" />
+      <point x="2670.2687728985406" y="185.3719507532308" />
+      <point x="2151.6562088548" y="185.3719507532308" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.profileManagementApp_userprofile" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.auth_user" relationship="REFERENCES">
+      <point x="0.0" y="-71.0" />
+      <point x="1741.8813559322034" y="305.0" />
+      <point x="2151.6562088548" y="305.0" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode_favourite_episodes" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode" relationship="REFERENCES">
+      <point x="-151.08840633892282" y="48.8315362850808" />
+      <point x="963.9307180546002" y="383.9312533455684" />
+      <point x="575.2888803137403" y="383.9312533455684" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast_subscribers" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast" relationship="REFERENCES">
+      <point x="-73.0" y="-49.0" />
+      <point x="262.5699133100811" y="544.094134740384" />
+      <point x="343.52466161963775" y="544.094134740384" />
+      <point x="-46.88649968310227" y="67.24271621931649" />
+    </edge>
+    <edge source="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_episode" target="76c9e908-f4a7-44cb-9565-39d5b5e093de.TABLE:main.podcastapp_podcast" relationship="REFERENCES">
+      <point x="0.0" y="-115.0" />
+      <point x="575.2888803137403" y="305.0" />
+      <point x="390.41116130274" y="305.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7978645515558264" showDependencies="false" x="967.8914888735953" y="395.3649919706357" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

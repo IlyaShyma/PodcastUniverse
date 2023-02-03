@@ -4,7 +4,7 @@ from django.core.files.storage import FileSystemStorage
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import datetime
-from audio_validator.validator import AudioValidator
+
 
 from profileManagementApp.models import UserProfile
 

@@ -181,7 +181,6 @@ def episode_view(request, episode_id):
                 request.session[session_key] = True
 
         if "report_comment_flag" in request.POST:
-            print(request.POST.get("report"))
 
             reported_comment = get_object_or_404(Comment, pk=int(request.POST.get("report")))
             session_key = "report_" + str(reported_comment)

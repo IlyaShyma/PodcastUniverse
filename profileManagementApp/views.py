@@ -1,6 +1,6 @@
-from django.contrib.auth.decorators import login_required
+
 from django.http import HttpResponseRedirect
-from django.template.context_processors import request
+
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
