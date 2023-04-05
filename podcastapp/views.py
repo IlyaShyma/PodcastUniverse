@@ -161,6 +161,7 @@ def podcast_view(request, podcast_id):
                 podcast.subscribers.remove(me)
         return HttpResponseRedirect(request.path_info)
 
+    context["comment_form"] = CommentForm()
     return render(request, "podcastapp/list_episodes.html", context=context)
 
 
@@ -216,6 +217,7 @@ def episode_view(request, episode_id):
                     form.instance.episode = episode
                     form.instance.user_profile = me
                     form.save()
+                    return HttpResponseRedirect(request.path_info)
 
 
         if "guest_flag" in request.POST:
@@ -260,9 +262,12 @@ def episode_view(request, episode_id):
 
     context["hosts"] = hosts
     context["guests"] = guests
+
+    context["ho_aggiunto_qualcosa"] = False
+
     if me in hosts:
         context["am_i_creator"] = True
-    return render(request, "podcastapp/episode_pagee.html", context=context)
+    return render(request, "podcastapp/episopagee.html", context=context)
 
 
 def search_all(request):
