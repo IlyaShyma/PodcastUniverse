@@ -59,7 +59,7 @@ class CommentForm(forms.ModelForm):
             "content",
         ]
         widgets = {
-            "content": Textarea(attrs={"rows": 4, "cols": 100}),
+             "content": Textarea(attrs={"rows": 4, "cols": 70}),
         }
         exclude = ('episode', 'user_profile',)
 
